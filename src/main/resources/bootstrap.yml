@@ -1,0 +1,23 @@
+server:
+  port: 8011
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: simple-service
+  cloud:
+    config:
+      discovery:
+        # if spring.cloud.config.discovery.enabled is changed to false and the spring-cloud-starter-consul-discovery dependency is removed then we don't get the exception
+        enabled: true
+        serviceId: configserver
+
+management:
+  endpoint:
+    health:
+      show-detail: when-authorized
+  endpoints:
+    web:
+      exposure:
+        include: '*'
